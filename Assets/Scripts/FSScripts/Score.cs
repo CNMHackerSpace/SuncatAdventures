@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] int score;
+
+    public int GetScore()
     {
-        
+        return score;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeScore( int change)
     {
-        
+        score = score + change;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Score!");
-    }
-
 }
