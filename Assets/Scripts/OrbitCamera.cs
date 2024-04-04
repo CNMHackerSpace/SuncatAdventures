@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class OrbitCamera : MonoBehaviour {
 	[SerializeField] Transform target;
-
+	[SerializeField] Vector3 lookAtAdjustment = new Vector3(0.0f,0.0f,0.0f);	// offset from targ;	
+	private Vector3 offset;
 	public float rotSpeed = 1.5f;
 
 	private float rotY;
-	private Vector3 offset;
-
+	
 	// Use this for initialization
 	void Start() {
 		rotY = transform.eulerAngles.y;
@@ -29,6 +29,6 @@ public class OrbitCamera : MonoBehaviour {
 
 		Quaternion rotation = Quaternion.Euler(0, rotY, 0);
 		transform.position = target.position - (rotation * offset);
-		transform.LookAt(target);
+		transform.LookAt(target.position + lookAtAdjustment);
 	}
 }
