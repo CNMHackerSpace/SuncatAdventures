@@ -3189,6 +3189,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 346897752382864566, guid: 5181abb8cfbde2948b0575184ed16a5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 346897752382864566, guid: 5181abb8cfbde2948b0575184ed16a5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -13.988007
+      objectReference: {fileID: 0}
     - target: {fileID: 6219792675103671442, guid: 5181abb8cfbde2948b0575184ed16a5f, type: 3}
       propertyPath: creditText
       value: Airplane provided by Awesome Cartoon Airplanes asset by funtechgames
