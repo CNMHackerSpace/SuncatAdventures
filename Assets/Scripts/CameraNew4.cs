@@ -12,13 +12,13 @@ public class CameraNew4 : MonoBehaviour
 
     void Start()
     {
-        // Set the initial offset to third person view
+        
         currentOffset = offsetThirdPerson;
     }
 
     public void ToggleView()
     {
-        // Toggle the current offset between third and first person views
+        
         currentOffset = (currentOffset == offsetThirdPerson) ? offsetFirstPerson : offsetThirdPerson;
     }
 

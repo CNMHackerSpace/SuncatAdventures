@@ -16,8 +16,8 @@ public class AIplaneflight : MonoBehaviour
     private float smoothTime = 2f;
     public float minX = -400f;
     public float maxX = 400f;
-    public float minY = 10f; // Minimum altitude
-    public float maxY = 150f; // Maximum altitude
+    public float minY = 10f; 
+    public float maxY = 150f;
     public float minZ = -400f;
     public float maxZ = 400f;
 
@@ -26,13 +26,13 @@ public class AIplaneflight : MonoBehaviour
     void Start()
     {
         FlySpeed = 10f;
-        // Start the random flight coroutine
+        
         StartCoroutine(RandomFlight());
     }
 
     void Update()
     {
-        // Constrain the object's position within the defined boundaries
+        
         float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
         float clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
         float clampedZ = Mathf.Clamp(transform.position.z, minZ, maxZ);
