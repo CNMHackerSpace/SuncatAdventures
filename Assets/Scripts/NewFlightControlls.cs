@@ -40,8 +40,12 @@ public class NewBehaviourScript : MonoBehaviour
         Yaw += horizontalInput * YawAmount * Time.deltaTime;
         float pitch = Mathf.Lerp(0, 20, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
         float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
+        var oldRot = transform.rotation;
         transform.rotation = Quaternion.Euler(Vector3.up * Yaw + Vector3.right * pitch + Vector3.forward * roll);
-
+        if(oldRot.x - transform.rotation.x > 0.1f)
+        {
+           Debug.Log($"Pitch{transform.rotation.x}");
+        }
     }
     void CheckAudio()
     {
