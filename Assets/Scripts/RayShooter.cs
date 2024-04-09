@@ -12,8 +12,8 @@ public class RayShooter : MonoBehaviour
     void Start()
     {
         _camera = GetComponent<Camera>();
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OnGUI()
@@ -21,7 +21,7 @@ public class RayShooter : MonoBehaviour
         int size = 12;
         float posX = _camera.pixelWidth/2 - size/4;
         float posY = _camera.pixelHeight/2 - size/2;
-        GUI.Label(new Rect(posX, posY, size, size), "*");
+        GUI.Label(new Rect(posX, posY, size, size), "X");
     }
 
     // Update is called once per frame
@@ -35,13 +35,14 @@ public class RayShooter : MonoBehaviour
                 0);
 
             Ray ray = _camera.ScreenPointToRay(point);
-            RaycastHit hit;
+            RaycastHit[] hits = Physics.RaycastAll(ray, 100.0f);
 
-            if (Physics.Raycast(ray, out hit))
-            {
+            foreach (RaycastHit hit in hits)
+            { 
                 hitObject = hit.transform.gameObject;
                 target = hitObject.GetComponent<ReactiveTarget>();
 
+                Debug.Log("Hit: " + hitObject.name);
                 if (target != null)
                 {
                     //Debug.Log("Target hit");

@@ -31,6 +31,7 @@ public class ReactiveTarget : MonoBehaviour
         gameObject.transform.parent = null;
         // rigidbody added back
         _rigidbody = gameObject.AddComponent<Rigidbody>();
+        _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
     public string Type
