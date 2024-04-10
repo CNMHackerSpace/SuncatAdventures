@@ -38,10 +38,10 @@ public class NewBehaviourScript : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Yaw += horizontalInput * YawAmount * Time.deltaTime;
-        float pitch = Mathf.Lerp(0, 20, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
-        float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
-        transform.rotation = Quaternion.Euler(Vector3.up * Yaw + Vector3.right * pitch + Vector3.forward * roll);
-
+        float pitch = Mathf.Lerp(0, 30, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
+        float roll = Mathf.Lerp(0, 40, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
+        // transform.rotation = Quaternion.Euler(Vector3.up * Yaw + Vector3.right * pitch + Vector3.forward * roll);
+        transform.rotation = Quaternion.Euler(new Vector3(pitch, Yaw, roll));
     }
     //Check speed for audio auto turn on and off
     void CheckAudio()
