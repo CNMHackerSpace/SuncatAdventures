@@ -1,1 +1,3 @@
 # SuncatAdventures
+# Game Design Document
+
