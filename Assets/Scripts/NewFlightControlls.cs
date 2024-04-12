@@ -8,12 +8,12 @@ public class NewBehaviourScript : MonoBehaviour
     public float YawAmount = 120;
     private float Yaw;
     public AudioSource audioSource; // Reference to the AudioSource component
-    public float activationSpeed = 5f; // Speed to start playing the sound
+    public float activationSpeed = 10f; // Speed to start playing the sound
     public float deactivationSpeed = 5f; // Speed to stop playing the sound
-   
+    // Start is called before the first frame update
     void Start()
     {
-        // AudioSource component is attached to the GameObject
+        // Ensure the AudioSource component is attached to the GameObject
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -38,12 +38,15 @@ public class NewBehaviourScript : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Yaw += horizontalInput * YawAmount * Time.deltaTime;
-        float pitch = Mathf.Lerp(0, 30, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
-        float roll = Mathf.Lerp(0, 40, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
-        // transform.rotation = Quaternion.Euler(Vector3.up * Yaw + Vector3.right * pitch + Vector3.forward * roll);
-        transform.rotation = Quaternion.Euler(new Vector3(pitch, Yaw, roll));
+        float pitch = Mathf.Lerp(0, 20, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
+        float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
+        var oldRot = transform.rotation;
+        transform.rotation = Quaternion.Euler(Vector3.up * Yaw + Vector3.right * pitch + Vector3.forward * roll);
+        if(oldRot.x - transform.rotation.x > 0.1f)
+        {
+           Debug.Log($"Pitch{transform.rotation.x}");
+        }
     }
-    //Check speed for audio auto turn on and off
     void CheckAudio()
     {
         if (FlySpeed >= activationSpeed && !audioSource.isPlaying)
@@ -55,6 +58,16 @@ public class NewBehaviourScript : MonoBehaviour
             audioSource.Stop();
         }
     }
-    
-    
+    // Call this method from your UI button to toggle sound manually
+    public void ToggleSound()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        else
+        {
+            audioSource.Play();
+        }
+    }
 }
