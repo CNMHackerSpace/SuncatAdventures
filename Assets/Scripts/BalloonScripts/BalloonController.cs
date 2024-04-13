@@ -6,21 +6,22 @@ using UnityEngine;
 
 public class BalloonController : MonoBehaviour
 {
-    public float windDirectionChangeAltitude = 200.0f;
+    public float windDirectionChangeAltitude = 40.0f;
     public float windForce = 20.0f;
     public Vector3 groundWindDirection = new Vector3(1, 0, 0);
     public float windSpeed = 10.0f;
     private ConstantForce force;
     private Rigidbody rb;
     private float yForce = 0.0f;
-
+    public float yForceDecay = -0.01f;
     public TMP_Text altitudeText;
     public TMP_Text windSpeedText;
     
+    public TMP_Text telemetryText;
     public float upForce = 0.1f; //kg/m^3
     public float downForce = 0.1f; //kg/m^3
     public float maxYForce = 20.0f; //kg/m^3
-    public float minYForce = -10.0f; //kg/m^3
+    public float minYForce = 0.0f; //kg/m^3
     
 
     // Start is called before the first frame update
@@ -32,12 +33,17 @@ public class BalloonController : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        // balloonDensity += Input.GetKey(KeyCode.W) ? upDensityChange : Input.GetKey(KeyCode.S) ? -downDensityChange : 0;
-        // float altitude = transform.position.y;
-        // buoyancy.fluidDensity = (MAX_ALTITUDE - altitude)/MAX_ALTITUDE * 1.204f; //kg/m^3
-        // buoyancy.objectDensity = balloonDensity; //kg/m^3
-        
+    {       
+        telemetryText.text = $"Velocity: {rb.velocity.magnitude.ToString("F2")}";
+        telemetryText.text += $"\nForce: {force.relativeForce.magnitude.ToString("F2")}";
+        telemetryText.text += $"\nYForce: {yForce.ToString("F2")}";
+        telemetryText.text += $"\nWindDirection: {groundWindDirection.ToString("F2")}";
+        telemetryText.text += $"\nWindSpeed: {windSpeed.ToString("F2")}";
+        telemetryText.text += $"\nWindDirectionChangeAltitude: {windDirectionChangeAltitude.ToString("F2")}";
+        telemetryText.text += $"\nAltitude: {transform.position.y.ToString("F2")}";
+        yForce += yForceDecay;
+        yForce = Math.Clamp(yForce, minYForce, maxYForce);
+
         if (Input.GetKey(KeyCode.W))
         {
             yForce += upForce;
