@@ -22,7 +22,6 @@ public class BalloonController : MonoBehaviour
     public float maxYForce = 20.0f; //kg/m^3
     public float minYForce = -10.0f; //kg/m^3
     
-    public Buoyancy buoyancy;
 
     // Start is called before the first frame update
     void Start()
