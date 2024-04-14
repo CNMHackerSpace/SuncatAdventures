@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 public class DartShooter : MonoBehaviour, IInteractable
 {
     private Camera _camera;
+    [SerializeField] private GameObject _dartPrefab;
+    private GameObject _dart;
     void Start()
     {
         
