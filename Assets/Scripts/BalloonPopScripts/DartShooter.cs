@@ -37,7 +37,6 @@ public class DartShooter : MonoBehaviour, IInteractable
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                StartCoroutine(SphereIndicator(hit.point));
 
                 GameObject hitObject = hit.transform.gameObject;
                 ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
@@ -58,15 +57,7 @@ public class DartShooter : MonoBehaviour, IInteractable
             }
         }
     }
-    private IEnumerator SphereIndicator(Vector3 pos)
-    {
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = pos;
-        
-
-        yield return new WaitForSeconds(1);
-        Destroy(sphere);
-    }
+    
 
     public void Interact()
     {

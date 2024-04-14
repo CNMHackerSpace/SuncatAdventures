@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ReactiveTarget : MonoBehaviour
 {
-    public int health = 100;
 
     public void ReactToHit()
     {
@@ -13,7 +12,7 @@ public class ReactiveTarget : MonoBehaviour
 
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0);
 
         Destroy(this.gameObject);
     }
