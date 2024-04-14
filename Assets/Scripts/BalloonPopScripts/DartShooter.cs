@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class DartShooter : MonoBehaviour
+public class DartShooter : MonoBehaviour, IInteractable
 {
     private Camera _camera;
     void Start()
@@ -66,6 +66,11 @@ public class DartShooter : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         Destroy(sphere);
+    }
+
+    public void Interact()
+    {
+        Debug.Log("Dart added to Inventory");
     }
 }
 
