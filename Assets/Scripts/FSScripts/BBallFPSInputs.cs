@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 
-public class FPSInputs : MonoBehaviour
+public class BBallFPSInputs : MonoBehaviour
 {
     public float pushForce = 3.0f;
 
