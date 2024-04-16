@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/FPS Input")]
-public class FPSInput : MonoBehaviour
+public class FPSInput: MonoBehaviour
 {
     public float baseSpeed = 6.0f;
     public float speed = 15.0f;

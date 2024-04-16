@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/FPS Input")]
-public class FPSInput : MonoBehaviour
+public class BalloonPopFPSInput : MonoBehaviour
 {
     public float speed = 5.0f;
     public float gravity = -9.8f;

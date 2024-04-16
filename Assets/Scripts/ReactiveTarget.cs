@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReactiveTarget : MonoBehaviour
+public class BalloonPopReactiveTarget : MonoBehaviour
 {
     [SerializeField] string type;
     private Rigidbody _rigidbody;

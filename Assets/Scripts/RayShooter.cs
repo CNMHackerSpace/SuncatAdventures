@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class RayShooter : MonoBehaviour
 {
     private Camera _camera;
-    private ReactiveTarget target;
+    private BalloonPopReactiveTarget target;
     private  GameObject hitObject;
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class RayShooter : MonoBehaviour
             foreach (RaycastHit hit in hits)
             { 
                 hitObject = hit.transform.gameObject;
-                target = hitObject.GetComponent<ReactiveTarget>();
+                target = hitObject.GetComponent<BalloonPopReactiveTarget>();
 
                 Debug.Log("Hit: " + hitObject.name);
                 if (target != null)

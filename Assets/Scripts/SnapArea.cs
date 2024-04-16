@@ -6,11 +6,11 @@ public class SnapArea : MonoBehaviour
 {
     // When a reactivetarget of type motherboard enters the snap area, it should snap to the area
     [SerializeField] string type;
-    ReactiveTarget target;
+    BalloonPopReactiveTarget target;
 
     private void OnTriggerEnter(Collider other)
     {
-        target = other.GetComponent<ReactiveTarget>();
+        target = other.GetComponent<BalloonPopReactiveTarget>();
         if (target != null && this.type == target.Type)
         {
             // Snap the object to the area
