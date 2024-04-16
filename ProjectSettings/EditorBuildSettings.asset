@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevels/BalloonPopLevel.unity
     guid: bb7a6dfe07bdb0b4a95f8f7154ee92ca
+  - enabled: 1
+    path: Assets/Scenes/GameLevels/ComputerMaker_JJB.unity
+    guid: 890192f6b8e71d24bad4904358fe1285
   m_configObjects: {}
