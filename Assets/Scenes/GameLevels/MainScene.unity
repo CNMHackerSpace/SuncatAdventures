@@ -1177,8 +1177,12 @@ PrefabInstance:
       value: AirPlaineFlight Transition
       objectReference: {fileID: 0}
     - target: {fileID: 2377354448871643581, guid: 44464a41287b5db43bb5a8d433d63c9e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.3645
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377354448871643581, guid: 44464a41287b5db43bb5a8d433d63c9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 298.38
+      value: 296.9
       objectReference: {fileID: 0}
     - target: {fileID: 2377354448871643581, guid: 44464a41287b5db43bb5a8d433d63c9e, type: 3}
       propertyPath: m_LocalPosition.y
