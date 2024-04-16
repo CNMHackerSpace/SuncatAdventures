@@ -1,2 +1,2 @@
-torch~=2.2.1
-mlagents
+torch ~= 2.2.1 --index-url https://download.pytorch.org/whl/cu121
+mlagents == 1.0.0

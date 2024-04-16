@@ -22,6 +22,7 @@ public class BalloonController : MonoBehaviour
     public float downForce = 0.1f; //kg/m^3
     public float maxYForce = 20.0f; //kg/m^3
     public float minYForce = 0.0f; //kg/m^3
+    public bool showTelemetry = false;
     
 
     // Start is called before the first frame update
@@ -33,14 +34,8 @@ public class BalloonController : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {       
-        telemetryText.text = $"Velocity: {rb.velocity.magnitude.ToString("F2")}";
-        telemetryText.text += $"\nForce: {force.relativeForce.magnitude.ToString("F2")}";
-        telemetryText.text += $"\nYForce: {yForce.ToString("F2")}";
-        telemetryText.text += $"\nWindDirection: {groundWindDirection.ToString("F2")}";
-        telemetryText.text += $"\nWindSpeed: {windSpeed.ToString("F2")}";
-        telemetryText.text += $"\nWindDirectionChangeAltitude: {windDirectionChangeAltitude.ToString("F2")}";
-        telemetryText.text += $"\nAltitude: {transform.position.y.ToString("F2")}";
+    {
+        if (showTelemetry) ShowTelemetry();
         yForce += yForceDecay;
         yForce = Math.Clamp(yForce, minYForce, maxYForce);
 
@@ -52,9 +47,20 @@ public class BalloonController : MonoBehaviour
         {
             yForce -= downForce;
         }
-        
+
         var windForce = CalculateWindForce(transform.position.y);
         force.relativeForce = new Vector3(windForce.x, yForce, windForce.z);
+    }
+
+    private void ShowTelemetry()
+    {
+        telemetryText.text = $"Velocity: {rb.velocity.magnitude.ToString("F2")}";
+        telemetryText.text += $"\nForce: {force.relativeForce.magnitude.ToString("F2")}";
+        telemetryText.text += $"\nYForce: {yForce.ToString("F2")}";
+        telemetryText.text += $"\nWindDirection: {groundWindDirection.ToString("F2")}";
+        telemetryText.text += $"\nWindSpeed: {windSpeed.ToString("F2")}";
+        telemetryText.text += $"\nWindDirectionChangeAltitude: {windDirectionChangeAltitude.ToString("F2")}";
+        telemetryText.text += $"\nAltitude: {transform.position.y.ToString("F2")}";
     }
 
     private Vector3 CalculateWindForce(float altitude)
