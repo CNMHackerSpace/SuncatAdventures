@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SettingsPopup : MonoBehaviour
@@ -19,12 +21,12 @@ public class SettingsPopup : MonoBehaviour
     }
     public void OnMainLevelClicked()
     {
-
+        SceneManager.LoadScene("MainScene");
     }
 
     public void OnQuitClicked()
     {
-
+        Application.Quit();
     }
 
 

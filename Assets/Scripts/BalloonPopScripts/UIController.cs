@@ -24,6 +24,7 @@ public class UIController : MonoBehaviour
     public void OnOpenSettings()
     {
         settingsPopup.Open();
+        Debug.Log("Opening settings");
     }
     public void OnPointerDown()
     {
