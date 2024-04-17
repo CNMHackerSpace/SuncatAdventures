@@ -35,7 +35,7 @@ public class UIController : MonoBehaviour
     {
         _score = 0;
 
-        settingsPopup.Close();
+        settingsPopup.OnCloseClicked();
        
     }
 
