@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI countdownLabel;
-    private float elapsedTime;
     private float timeRemaining;
     private int minutes = 5;
     private int seconds = 0;
@@ -21,9 +20,21 @@ public class CountdownTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        minutes = Mathf.FloorToInt((timeRemaining - elapsedTime) / 60);
-        seconds = Mathf.FloorToInt((timeRemaining - elapsedTime) % 60);
-        this.countdownLabel.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            if (timeRemaining <= 60f)
+            {
+                this.countdownLabel.color = Color.red;
+            }
+        } else if(timeRemaining < 0)
+        {
+            timeRemaining = 0;
+        }
+        
+        minutes = Mathf.FloorToInt(timeRemaining / 60);
+        seconds = Mathf.FloorToInt(timeRemaining  % 60);
+        this.countdownLabel.text = string.Format("{0:00}:{1:00}", minutes, seconds);  
+
     }
 }
