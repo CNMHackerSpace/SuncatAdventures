@@ -1,33 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BackandForth : MonoBehaviour
 {
-    public float speed = 3.0f;
-    public float maxZ = 18.0f;
-    public float minZ = -18.0f;
+    public float speed = 10.0f; // Default speed
+    public float maxY = 60f;    // Default maxY
+    public float minY = -20f;   // Default minY
 
     private int _direction = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0, _direction * speed * Time.deltaTime);
+        transform.Translate(0, _direction * speed * Time.deltaTime, 0);
         bool bounced = false;
-        if(transform.position.z > maxZ|| transform.position.z < minZ)
+        if (transform.position.y > maxY || transform.position.y < minY)
         {
             _direction = -_direction;
             bounced = true;
         }
-        if(bounced)
+        if (bounced)
         {
-            transform.Translate(0, 0, _direction * speed * Time.deltaTime);
+            transform.Translate(0, _direction * speed * Time.deltaTime, 0);
         }
     }
 }

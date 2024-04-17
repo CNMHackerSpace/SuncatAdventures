@@ -23,7 +23,7 @@ public class CountdownTimer : MonoBehaviour
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-            if (timeRemaining <= 60f)
+            if (timeRemaining <= 30f)
             {
                 this.countdownLabel.color = Color.red;
             }
