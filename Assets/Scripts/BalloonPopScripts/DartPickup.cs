@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DartPickup : MonoBehaviour
 {
-    [SerializeField] private GameObject dartPopup; // Reference to the dart popup GameObject
     [SerializeField] private GameObject dartPrefab; // Reference to the dart prefab to spawn
     private DartInventory dartInventory;
 
@@ -17,34 +16,15 @@ public class DartPickup : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Show the dart pickup prompt
-            dartPopup.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Hide the dart pickup prompt
-            dartPopup.SetActive(false);
-        }
-    }
-
     private void Update()
     {
         // Check for right mouse button click to pick up the dart
-        if (Input.GetMouseButtonDown(1) && dartPopup.activeSelf)
+        if (Input.GetMouseButtonDown(1))
         {
             // Add the dart to the inventory
             dartInventory.AddDarts(1);
             // Deactivate the dart GameObject
             gameObject.SetActive(false);
-            // Check if all darts are picked up, and regenerate them if needed
             CheckAndRegenerateDarts();
         }
     }
@@ -62,7 +42,6 @@ public class DartPickup : MonoBehaviour
 
     private void RegenerateDarts()
     {
-        // Spawn a new dart object at the same position as this object
         Instantiate(dartPrefab, transform.position, Quaternion.identity);
     }
 }
