@@ -14,6 +14,7 @@ public class SettingsPopup : MonoBehaviour
     public void Open()
     {
         this.gameObject.SetActive(true);
+        Debug.Log("Settings opened");
     }
     public void OnCloseClicked()
     {

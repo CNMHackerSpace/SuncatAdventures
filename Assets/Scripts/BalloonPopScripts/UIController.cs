@@ -7,18 +7,34 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private Text balloonsRemaining;
     [SerializeField] private SettingsPopup settingsPopup;
-    [SerializeField] private Text dartCounter;
+    [SerializeField] private Text dartCounter; // This is the text field displaying dart count
     [SerializeField] private CountdownTimer countdownTimer;
     private int _score;
 
-    void Awake()
+    private DartInventory dartInventory; // Reference to DartInventory script
+
+    void Start()
     {
-        //Messenger.AddListener(GameEvent.ENEMY_HIT, OnEnemyHit);
+        _score = 0;
+        settingsPopup.OnCloseClicked();
+
+        // Find and store reference to DartInventory script
+        dartInventory = FindObjectOfType<DartInventory>();
     }
 
-    void OnDestroy()
+    private void Update()
     {
-        //Messenger.RemoveListener(GameEvent.ENEMY_HIT, OnEnemyHit);
+        // Update dart count text
+        if (dartCounter != null && dartInventory != null)
+        {
+            dartCounter.text = dartInventory.GetDartCount().ToString();
+        }
+    }
+
+    private void OnEnemyHit()
+    {
+        _score += 1;
+        balloonsRemaining.text = _score.ToString();
     }
 
     public void OnOpenSettings()
@@ -26,24 +42,9 @@ public class UIController : MonoBehaviour
         settingsPopup.Open();
         Debug.Log("Opening settings");
     }
+
     public void OnPointerDown()
     {
         Debug.Log("pointer down");
-    }
-    // Start is called before the first frame update
-
-    void Start()
-    {
-        _score = 0;
-
-        settingsPopup.OnCloseClicked();
-       
-    }
-
-    // Update is called once per frame
-    private void OnEnemyHit()
-    {
-        _score += 1;
-        balloonsRemaining.text = _score.ToString();
     }
 }
