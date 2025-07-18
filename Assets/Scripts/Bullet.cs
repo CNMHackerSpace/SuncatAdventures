@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.useGravity = false; // Ensure gravity is turned off.
         rb.constraints = RigidbodyConstraints.FreezeRotation; // Freeze rotation on all axes
-        rb.velocity = transform.forward * (bulletSpeed + flySpeed); // Apply velocity in the local forward direction
+        rb.linearVelocity = transform.forward * (bulletSpeed + flySpeed); // Apply velocity in the local forward direction
         Invoke("DestroyBullet", lifespan); // Schedule destruction of the bullet
     }
 

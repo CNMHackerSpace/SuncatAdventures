@@ -41,7 +41,7 @@ public class BBallFPSInputs : MonoBehaviour
         Rigidbody body = hit.collider.attachedRigidbody;
         if (body != null && !body.isKinematic)
         {
-            body.velocity = hit.moveDirection * pushForce;
+            body.linearVelocity = hit.moveDirection * pushForce;
         }
     }
 }

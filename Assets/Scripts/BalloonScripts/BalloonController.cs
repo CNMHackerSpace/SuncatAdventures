@@ -54,7 +54,7 @@ public class BalloonController : MonoBehaviour
 
     private void ShowTelemetry()
     {
-        telemetryText.text = $"Velocity: {rb.velocity.magnitude.ToString("F2")}";
+        telemetryText.text = $"Velocity: {rb.linearVelocity.magnitude.ToString("F2")}";
         telemetryText.text += $"\nForce: {force.relativeForce.magnitude.ToString("F2")}";
         telemetryText.text += $"\nYForce: {yForce.ToString("F2")}";
         telemetryText.text += $"\nWindDirection: {groundWindDirection.ToString("F2")}";
@@ -72,7 +72,7 @@ public class BalloonController : MonoBehaviour
         var altitudeWindSpeed = windSpeed * altidudeRatio;
         windSpeedText.text = $"Wind speed: {altitudeWindSpeed.ToString("F2")}";
 
-        var relativeSpeedRatio = (rb.velocity.magnitude - altitudeWindSpeed)/altitudeWindSpeed;
+        var relativeSpeedRatio = (rb.linearVelocity.magnitude - altitudeWindSpeed)/altitudeWindSpeed;
         relativeSpeedRatio = Math.Clamp(relativeSpeedRatio, -1, 1);
 
         return relativeSpeedRatio * groundWindDirection * windForce;
