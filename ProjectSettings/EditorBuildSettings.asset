@@ -23,4 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevels/BasketBall.unity
     guid: 362240d85074cf44f9fe9ec41f668fe6
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: da9bcc3f3dc9d244688226f251cc98cc, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2a05209a317af0743b17d3a95cd3ddfe, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 8535263701ce3f145a927cf25b36d794, type: 2}
+  m_UseUCBPForAssetBundles: 0
