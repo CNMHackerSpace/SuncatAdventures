@@ -24,8 +24,11 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLevels/BasketBall.unity
     guid: 362240d85074cf44f9fe9ec41f668fe6
   - enabled: 1
-    path: Assets/Scenes/WorkingLevels/VoiceReqGameBC.unity
+    path: Assets/Scenes/WorkingLevels/BC_Scenes/VoiceReqGameBC.unity
     guid: 53afbfb06876265428aa925ba8470c91
+  - enabled: 1
+    path: Assets/Scenes/WorkingLevels/BC_Scenes/GameScene.unity
+    guid: b8b62924db8b0ab42a388b0de75053f3
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4d35cfc3165097348a142f5f024e3e01, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d413b7e0b9358844cbff89e075eed008, type: 3}
