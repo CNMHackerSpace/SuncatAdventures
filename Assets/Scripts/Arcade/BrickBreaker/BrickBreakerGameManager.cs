@@ -7,6 +7,7 @@ public class BrickBreakerGameManager : MonoBehaviour
     public GameObject ballPrefab;
     public RectTransform ballSpawnPoint;
     public RectTransform ballParent;
+    public ArcadeMachineInteraction arcadeTrigger;
 
     public GameObject brickPrefab;
     public RectTransform spawnArea;
@@ -59,6 +60,8 @@ public class BrickBreakerGameManager : MonoBehaviour
 
     public void QuitGame()
     {
+
+        Debug.Log("Quit Game called");
         if (brickBreakerCanvas != null)
         {
             brickBreakerCanvas.SetActive(false);
@@ -67,7 +70,19 @@ public class BrickBreakerGameManager : MonoBehaviour
         {
             Debug.LogWarning("brickBreakerCanvas not assigned in GameManager.");
         }
+
+        // Tell the trigger to re-enable player control
+        if (arcadeTrigger != null)
+        {
+            arcadeTrigger.RestorePlayerControl();
+            Debug.Log("RestorePlayerControl called");
+        }
+        else
+        {
+            Debug.LogWarning("arcadeTrigger not assigned in GameManager.");
+        }
     }
+
 
     public static int GetBrickCount()
     {

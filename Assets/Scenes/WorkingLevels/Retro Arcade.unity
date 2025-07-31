@@ -737,6 +737,7 @@ MonoBehaviour:
   ballPrefab: {fileID: 1501844345536864106, guid: 98cc8c367c6acf746a0eef647033c618, type: 3}
   ballSpawnPoint: {fileID: 1537762951}
   ballParent: {fileID: 2007912514}
+  arcadeTrigger: {fileID: 0}
   brickPrefab: {fileID: 7050308477402352442, guid: 2b1449cdfb8baa74ca1585473066efe8, type: 3}
   spawnArea: {fileID: 2007912514}
   brickManager: {fileID: 43530850}
@@ -2532,6 +2533,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 2007912513}
   gameName: Brick Breaker
   spawner: {fileID: 0}
+  RelativeMovement: {fileID: 0}
   interactionPromptObject: {fileID: 1668412625}
   interactionPromptText: {fileID: 1668412627}
 --- !u!1 &1119449182
@@ -3987,7 +3989,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487317495}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb66c62204047b44c84c959425323b85, type: 3}
   m_Name: 
@@ -3995,6 +3997,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 1423620166}
   gameName: Tetris
   spawner: {fileID: 1114536577}
+  RelativeMovement: {fileID: 0}
   interactionPromptObject: {fileID: 1668412625}
   interactionPromptText: {fileID: 1668412627}
 --- !u!1 &1502851058
@@ -4268,6 +4271,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 670232927}
   gameName: Pong
   spawner: {fileID: 0}
+  RelativeMovement: {fileID: 0}
   interactionPromptObject: {fileID: 1668412625}
   interactionPromptText: {fileID: 1668412627}
 --- !u!65 &1613856870

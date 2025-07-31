@@ -7,6 +7,7 @@ public class ArcadeMachineInteraction : MonoBehaviour
     public GameObject gameCanvas;
     public string gameName = "Arcade Game";
     public TetrominoSpawner spawner;
+    public MonoBehaviour RelativeMovement;
 
     [Header("Interaction Prompt")]
     public GameObject interactionPromptObject;
@@ -20,7 +21,12 @@ public class ArcadeMachineInteraction : MonoBehaviour
         {
             gameCanvas.SetActive(true);
             spawner?.SpawnNewTetromino();
-            interactionPromptObject?.SetActive(false); // hide prompt when entering game
+            interactionPromptObject?.SetActive(false); 
+            
+            if(RelativeMovement != null)
+            {
+                RelativeMovement.enabled = false;
+            }
         }
     }
 
@@ -48,4 +54,11 @@ public class ArcadeMachineInteraction : MonoBehaviour
             }
         }
     }
+
+    public void RestorePlayerControl()
+    {
+        if (RelativeMovement != null)
+            RelativeMovement.enabled = true;
+    }
+
 }
