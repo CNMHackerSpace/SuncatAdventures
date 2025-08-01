@@ -12,6 +12,7 @@ public class PongGameManager : MonoBehaviour
     public TMP_Text gameOverMessage;
     public PongAIPaddle aiPaddle;
     public GameObject startPanel;
+    public ArcadeMachineInteraction arcadeTrigger;
 
     [Header("Game Settings")]
     public int winningScore = 3;
@@ -167,6 +168,17 @@ public class PongGameManager : MonoBehaviour
 
         if (pongCanvas != null)
             pongCanvas.SetActive(false);
+
+        // Tell the trigger to re-enable player control
+        if (arcadeTrigger != null)
+        {
+            arcadeTrigger.RestorePlayerControl();
+            Debug.Log("RestorePlayerControl called");
+        }
+        else
+        {
+            Debug.LogWarning("arcadeTrigger not assigned in GameManager.");
+        }
     }
 
 

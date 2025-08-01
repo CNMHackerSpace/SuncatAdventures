@@ -1557,6 +1557,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800948463}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &829699838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1364093089871499631, guid: c8a9175e5069bf047a8e3fef37906fa1, type: 3}
+  m_PrefabInstance: {fileID: 1892787339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9305a02a1802340ba58e6bf06cb195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &862144396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,7 +2544,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 2007912513}
   gameName: Brick Breaker
   spawner: {fileID: 0}
-  RelativeMovement: {fileID: 0}
+  RelativeMovement: {fileID: 829699838}
   interactionPromptObject: {fileID: 1668412625}
   interactionPromptText: {fileID: 1668412627}
 --- !u!1 &1119449182
@@ -4271,7 +4282,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 670232927}
   gameName: Pong
   spawner: {fileID: 0}
-  RelativeMovement: {fileID: 0}
+  RelativeMovement: {fileID: 829699838}
   interactionPromptObject: {fileID: 1668412625}
   interactionPromptText: {fileID: 1668412627}
 --- !u!65 &1613856870
@@ -4330,6 +4341,7 @@ MonoBehaviour:
   gameOverMessage: {fileID: 86420857}
   aiPaddle: {fileID: 652513899}
   startPanel: {fileID: 592179549}
+  arcadeTrigger: {fileID: 0}
   winningScore: 3
   ballPrefab: {fileID: 576885656368364166, guid: dabf834ab1cc44746b32313fb328079b, type: 3}
   ballSpawnParent: {fileID: 670232928}
