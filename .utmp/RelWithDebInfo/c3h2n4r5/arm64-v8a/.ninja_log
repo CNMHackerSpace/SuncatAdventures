@@ -1,0 +1,12 @@
+# ninja log v5
+97	600	7757142838563546	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	4cd122788bf25010
+602	885	7757142841241355	C:/Users/Dillon/Documents/GitHub/SuncatAdventures/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/c3h2n4r5/obj/arm64-v8a/libswappywrapper.so	17fa1a25697a8b29
+37	1954	7757142852005138	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6b1b59ff938c8a29
+59	1966	7757142852056501	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	382981080106ef52
+26	1994	7757142852450530	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	6c6b42c7445d3b78
+70	1997	7757142852496079	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f3d014795f23f1a9
+2	2086	7757142853358551	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a4285bfbb663ff5
+83	2360	7757142856125511	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	8792b5e2ad9b783e
+47	2423	7757142856704444	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	140260ee44fbd65c
+15	2576	7757142858221939	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	973f597b75da09a9
+2577	2734	7757142859860281	C:/Users/Dillon/Documents/GitHub/SuncatAdventures/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/c3h2n4r5/obj/arm64-v8a/libgame.so	f74b1269e2e63415
