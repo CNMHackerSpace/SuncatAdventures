@@ -71,16 +71,7 @@ public class BrickBreakerGameManager : MonoBehaviour
             Debug.LogWarning("brickBreakerCanvas not assigned in GameManager.");
         }
 
-        // Tell the trigger to re-enable player control
-        if (arcadeTrigger != null)
-        {
-            arcadeTrigger.RestorePlayerControl();
-            Debug.Log("RestorePlayerControl called");
-        }
-        else
-        {
-            Debug.LogWarning("arcadeTrigger not assigned in GameManager.");
-        }
+       
     }
 
 

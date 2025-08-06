@@ -1,32 +1,35 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class ArcadeMachineInteraction : MonoBehaviour
 {
+    [Header("XR Game Activation")]
     public GameObject gameCanvas;
-    public string gameName = "Arcade Game";
-    public TetrominoSpawner spawner;
-    public MonoBehaviour RelativeMovement;
+    public InputActionProperty activationInput;  // Assign XR trigger or button input
 
     [Header("Interaction Prompt")]
     public GameObject interactionPromptObject;
-    public TextMeshProUGUI interactionPromptText; // or use UnityEngine.UI.Text
+    public TextMeshProUGUI interactionPromptText;
 
     private bool isPlayerInRange = false;
 
+    private void OnEnable()
+    {
+        activationInput.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        activationInput.action.Disable();
+    }
+
     void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInRange && activationInput.action.WasPressedThisFrame())
         {
             gameCanvas.SetActive(true);
-            spawner?.SpawnNewTetromino();
-            interactionPromptObject?.SetActive(false); 
-            
-            if(RelativeMovement != null)
-            {
-                RelativeMovement.enabled = false;
-            }
+            interactionPromptObject?.SetActive(false);
         }
     }
 
@@ -37,7 +40,7 @@ public class ArcadeMachineInteraction : MonoBehaviour
             isPlayerInRange = true;
             if (interactionPromptObject != null && interactionPromptText != null)
             {
-                interactionPromptText.text = $"Press E to Play {gameName}";
+                interactionPromptText.text = $"Press Button to Play";
                 interactionPromptObject.SetActive(true);
             }
         }
@@ -54,11 +57,4 @@ public class ArcadeMachineInteraction : MonoBehaviour
             }
         }
     }
-
-    public void RestorePlayerControl()
-    {
-        if (RelativeMovement != null)
-            RelativeMovement.enabled = true;
-    }
-
 }
