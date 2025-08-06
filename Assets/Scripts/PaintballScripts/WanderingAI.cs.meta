@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: b9645b453db5a804d91332844cc4ec85
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - lavaballPrefab: {fileID: 6131654259760887260, guid: 99fafa4c65f389643a8cea19b6638113, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
