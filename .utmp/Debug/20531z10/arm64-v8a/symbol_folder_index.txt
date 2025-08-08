@@ -1,0 +1,1 @@
+C:\Users\Luke\Unity\SuncatAdventures\Library\PramData\AndroidApplicationController\Cache\com.CNMHackerspace.SuncatAdventures\gradle-project\unityLibrary\build\intermediates\cxx\Debug\20531z10\obj\arm64-v8a

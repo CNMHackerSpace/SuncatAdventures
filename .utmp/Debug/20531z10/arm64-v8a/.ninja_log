@@ -1,0 +1,23 @@
+# ninja log v5
+89	1101	7762501470652455	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	eb5717da3f5a7a6a
+9	11954	7762501579252013	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5e1a8c4747fe6b70
+1103	1567	7762501474964500	C:/Users/Luke/Unity/SuncatAdventures/Library/PramData/AndroidApplicationController/Cache/com.CNMHackerspace.SuncatAdventures/gradle-project/unityLibrary/build/intermediates/cxx/Debug/20531z10/obj/arm64-v8a/libswappywrapper.so	4cd524e4f034eed2
+28	11723	7762501576762643	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	d55e3528ff401563
+18	11767	7762501577399766	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	12bf9105a089fea1
+75	11736	7762501576902738	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	62dbfdb922b4c515
+49	11740	7762501576932719	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	a17ab5ae77161f82
+1	11743	7762501577032782	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	862235273bdd7b30
+37	11952	7762501579242008	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	27a5bedd52b1fc2d
+61	12120	7762501580994230	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	3407e7cdcc1acc57
+12120	12404	7762501583820999	C:/Users/Luke/Unity/SuncatAdventures/Library/PramData/AndroidApplicationController/Cache/com.CNMHackerspace.SuncatAdventures/gradle-project/unityLibrary/build/intermediates/cxx/Debug/20531z10/obj/arm64-v8a/libgame.so	4c458c3e5796012c
+106	883	7762515264453401	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	eb5717da3f5a7a6a
+884	1192	7762515267306595	C:/Users/Luke/Unity/SuncatAdventures/Library/PramData/AndroidApplicationController/Cache/com.CNMHackerspace.SuncatAdventures/gradle-project/unityLibrary/build/intermediates/cxx/Debug/20531z10/obj/arm64-v8a/libswappywrapper.so	4cd524e4f034eed2
+80	6724	7762515322676607	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	d55e3528ff401563
+60	6727	7762515322729800	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	862235273bdd7b30
+53	6730	7762515322729800	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	a17ab5ae77161f82
+88	6771	7762515323280773	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	62dbfdb922b4c515
+37	6791	7762515323507116	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	12bf9105a089fea1
+69	6941	7762515324967585	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	27a5bedd52b1fc2d
+46	6973	7762515325337421	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5e1a8c4747fe6b70
+96	7143	7762515327040939	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	3407e7cdcc1acc57
+7144	7280	7762515328429427	C:/Users/Luke/Unity/SuncatAdventures/Library/PramData/AndroidApplicationController/Cache/com.CNMHackerspace.SuncatAdventures/gradle-project/unityLibrary/build/intermediates/cxx/Debug/20531z10/obj/arm64-v8a/libgame.so	4c458c3e5796012c
