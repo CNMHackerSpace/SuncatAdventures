@@ -56,7 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "SuncatAdventures.sln",
+    "dotnet.defaultSolution": "SuncatAdventures.slnx",
     "files.associations": {
         "atomic": "cpp",
         "bit": "cpp",

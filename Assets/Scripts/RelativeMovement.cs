@@ -35,8 +35,14 @@ public class RelativeMovement : MonoBehaviour
     private void Awake()
     {
         _controls = new PlayerControls();
-        _controls.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
+        _controls.Player.Move.performed += MovePerformed;
         _controls.Player.Move.canceled += ctx => _moveInput = Vector2.zero;
+    }
+
+    private void MovePerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        _moveInput = ctx.ReadValue<Vector2>();
+        Debug.Log($"Move Input: {_moveInput}");
     }
 
     private void OnEnable()
@@ -65,8 +71,8 @@ public class RelativeMovement : MonoBehaviour
         // start with zero and add movement components progressively
         Vector3 movement = Vector3.zero;
 
-        float horInput = _moveInput.x * sensitivity * Time.deltaTime;
-        float vertInput = _moveInput.y * sensitivity * Time.deltaTime;
+        float horInput = _moveInput.x * sensitivity;
+        float vertInput = _moveInput.y * sensitivity;
         if (horInput != 0 || vertInput != 0)
         {
 
@@ -137,6 +143,7 @@ public class RelativeMovement : MonoBehaviour
 
         movement *= Time.deltaTime;
         charController.Move(movement);
+        //Debug.Log($"Character Movement: {movement}");
     }
 
     // store collision to use in Update
