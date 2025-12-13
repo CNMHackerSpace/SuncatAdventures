@@ -66,25 +66,25 @@ public class VoiceRecognizer : MonoBehaviour
 
     void StartRecording()
     {
-        if (Microphone.devices.Length == 0)
-        {
-            Debug.LogWarning("No microphone detected");
-            return;
-        }
+        // if (Microphone.devices.Length == 0)
+        // {
+        //     Debug.LogWarning("No microphone detected");
+        //     return;
+        // }
 
-        micClip = Microphone.Start(null, false, 5, sampleRate);
-        isRecording = true;
+        // micClip = Microphone.Start(null, false, 5, sampleRate);
+        // isRecording = true;
     }
 
     void StopRecording()
     {
-        if (!isRecording) return;
+        // if (!isRecording) return;
 
-        Microphone.End(null);
-        isRecording = false;
+        // Microphone.End(null);
+        // isRecording = false;
 
-        byte[] wavData = WavUtility.FromAudioClip(micClip);
-        StartCoroutine(SendToWit(wavData));
+        // byte[] wavData = WavUtility.FromAudioClip(micClip);
+        // StartCoroutine(SendToWit(wavData));
     }
 
     IEnumerator SendToWit(byte[] wav)

@@ -10,98 +10,138 @@ using UnityEngine;
 // transition both idle and running to jump based on added Jumping boolean, transition back to idle
 
 [RequireComponent(typeof(CharacterController))]
-public class RelativeMovement : MonoBehaviour {
-	[SerializeField] Transform target;
-	
-	public float moveSpeed = 6.0f;
-	public float rotSpeed = 15.0f;
-	public float jumpSpeed = 15.0f;
-	public float gravity = -9.8f;
-	public float terminalVelocity = -20.0f;
-	public float minFall = -1.5f;
+public class RelativeMovement : MonoBehaviour
+{
+    [SerializeField] Transform target;
 
-	private float vertSpeed;
-	private ControllerColliderHit contact;
+    public float moveSpeed = 6.0f;
+    public float rotSpeed = 15.0f;
+    public float jumpSpeed = 15.0f;
+    public float gravity = -9.8f;
+    public float terminalVelocity = -20.0f;
+    public float minFall = -1.5f;
 
-	private CharacterController charController;
-	private Animator animator;
+    private float vertSpeed;
+    private ControllerColliderHit contact;
 
-	// Use this for initialization
-	void Start() {
-		vertSpeed = minFall;
+    private CharacterController charController;
+    private Animator animator;
 
-		charController = GetComponent<CharacterController>();
-		animator = GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void Update() {
 
-		// start with zero and add movement components progressively
-		Vector3 movement = Vector3.zero;
+    private PlayerControls _controls;
+    private Vector2 _moveInput;
+    public float sensitivity = 1.0f;
 
-		float horInput = Input.GetAxis("Horizontal");
-		float vertInput = Input.GetAxis("Vertical");
-		if (horInput != 0 || vertInput != 0) {
+    private void Awake()
+    {
+        _controls = new PlayerControls();
+        _controls.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
+        _controls.Player.Move.canceled += ctx => _moveInput = Vector2.zero;
+    }
 
-			// x z movement transformed relative to target
-			Vector3 right = target.right;
-			Vector3 forward = Vector3.Cross(right, Vector3.up);
-			movement = (right * horInput) + (forward * vertInput);
-			movement *= moveSpeed;
-			movement = Vector3.ClampMagnitude(movement, moveSpeed);
+    private void OnEnable()
+    {
+        _controls.Enable();
+    }
 
-			// face movement direction
-			//transform.rotation = Quaternion.LookRotation(movement); // to face immediately
-			Quaternion direction = Quaternion.LookRotation(movement);
-			transform.rotation = Quaternion.Lerp(transform.rotation,
-			                                     direction, rotSpeed * Time.deltaTime);
-		}
-		animator.SetFloat("Speed", movement.sqrMagnitude);
+    private void OnDisable()
+    {
+        _controls.Disable();
+    }
 
-		// raycast down to address steep slopes and dropoff edge
-		bool hitGround = false;
-		RaycastHit hit;
-		if (vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit)) {
-			float check = (charController.height + charController.radius) / 1.9f;
-			hitGround = hit.distance <= check;	// to be sure check slightly beyond bottom of capsule
-		}
+    // Use this for initialization
+    void Start()
+    {
+        vertSpeed = minFall;
 
-		// y movement: possibly jump impulse up, always accel down
-		// could _charController.isGrounded instead, but then cannot workaround dropoff edge
-		if (hitGround) {
-			if (Input.GetButtonDown("Jump")) {
-				vertSpeed = jumpSpeed;
-			} else {
-				vertSpeed = minFall;
-				animator.SetBool("Jumping", false);
-			}
-		} else {
-			vertSpeed += gravity * 5 * Time.deltaTime;
-			if (vertSpeed < terminalVelocity) {
-				vertSpeed = terminalVelocity;
-			}
-			if (contact != null ) {	// not right at level start
-				animator.SetBool("Jumping", true);
-			}
+        charController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+    }
 
-			// workaround for standing on dropoff edge
-			if (charController.isGrounded) {
-				if (Vector3.Dot(movement, contact.normal) < 0) {
-					movement = contact.normal * moveSpeed;
-				} else {
-					movement += contact.normal * moveSpeed;
-				}
-			}
-		}
-		movement.y = vertSpeed;
+    // Update is called once per frame
+    void Update()
+    {
 
-		movement *= Time.deltaTime;
-		charController.Move(movement);
-	}
+        // start with zero and add movement components progressively
+        Vector3 movement = Vector3.zero;
 
-	// store collision to use in Update
-	void OnControllerColliderHit(ControllerColliderHit hit) {
-		contact = hit;
-	}
+        float horInput = _moveInput.x * sensitivity * Time.deltaTime;
+        float vertInput = _moveInput.y * sensitivity * Time.deltaTime;
+        if (horInput != 0 || vertInput != 0)
+        {
+
+            // x z movement transformed relative to target
+            Vector3 right = target.right;
+            Vector3 forward = Vector3.Cross(right, Vector3.up);
+            movement = (right * horInput) + (forward * vertInput);
+            movement *= moveSpeed;
+            movement = Vector3.ClampMagnitude(movement, moveSpeed);
+
+            // face movement direction
+            //transform.rotation = Quaternion.LookRotation(movement); // to face immediately
+            Quaternion direction = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Lerp(transform.rotation,
+                                                 direction, rotSpeed * Time.deltaTime);
+        }
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        // raycast down to address steep slopes and dropoff edge
+        bool hitGround = false;
+        RaycastHit hit;
+        if (vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit))
+        {
+            float check = (charController.height + charController.radius) / 1.9f;
+            hitGround = hit.distance <= check;  // to be sure check slightly beyond bottom of capsule
+        }
+
+        // y movement: possibly jump impulse up, always accel down
+        // could _charController.isGrounded instead, but then cannot workaround dropoff edge
+        if (hitGround)
+        {
+            if (_controls.Player.Jump.WasPerformedThisFrame())
+            {
+                vertSpeed = jumpSpeed;
+            }
+            else
+            {
+                vertSpeed = minFall;
+                animator.SetBool("Jumping", false);
+            }
+        }
+        else
+        {
+            vertSpeed += gravity * 5 * Time.deltaTime;
+            if (vertSpeed < terminalVelocity)
+            {
+                vertSpeed = terminalVelocity;
+            }
+            if (contact != null)
+            {   // not right at level start
+                animator.SetBool("Jumping", true);
+            }
+
+            // workaround for standing on dropoff edge
+            if (charController.isGrounded)
+            {
+                if (Vector3.Dot(movement, contact.normal) < 0)
+                {
+                    movement = contact.normal * moveSpeed;
+                }
+                else
+                {
+                    movement += contact.normal * moveSpeed;
+                }
+            }
+        }
+        movement.y = vertSpeed;
+
+        movement *= Time.deltaTime;
+        charController.Move(movement);
+    }
+
+    // store collision to use in Update
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        contact = hit;
+    }
 }
