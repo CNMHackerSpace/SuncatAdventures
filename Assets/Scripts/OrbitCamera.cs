@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 // maintains position offset while orbiting around target
 
@@ -13,19 +14,27 @@ public class OrbitCamera : MonoBehaviour
 
     private PlayerControls _controls;
     private Vector2 _lookInput;
-    public float sensitivity = 1.0f;
+    public float sensitivity = 100.0f;
 
     private void Awake()
     {
         _controls = new PlayerControls();
-        _controls.Player.Look.performed += ctx => _lookInput = ctx.ReadValue<Vector2>();
-        _controls.Player.Look.canceled += ctx => _lookInput = Vector2.zero;
+        _controls.Player.Enable();
+        _controls.Player.Look.performed += OnLookPerformed;
+        _controls.Player.Look.canceled += OnLookCanceled;
     }
 
-    private void OnEnable()
+    private void OnLookPerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        _controls.Enable();
+        _lookInput = ctx.ReadValue<Vector2>();
+        Debug.Log($"Look Input: {_lookInput}");
     }
+
+    private void OnLookCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        _lookInput = Vector2.zero;
+    }
+
 
     private void OnDisable()
     {
@@ -35,6 +44,9 @@ public class OrbitCamera : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Debug.Log(Mouse.current != null
+        ? "Mouse detected"
+        : "Mouse NOT detected");
         rotY = transform.eulerAngles.y;
         offset = target.position - transform.position;
     }
