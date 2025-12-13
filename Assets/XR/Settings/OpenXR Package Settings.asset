@@ -1015,7 +1015,7 @@ MonoBehaviour:
   nameUi: 'Android XR: AR Face'
   version: 0.1.0
   featureIdInternal: com.unity.openxr.feature.arfoundation-androidxr-face
-  openxrExtensionStrings: XR_ANDROID_eye_tracking XR_ANDROID_face_tracking
+  openxrExtensionStrings: XR_ANDROID_eye_tracking
   company: Unity Technologies
   priority: 0
   targetOpenXRApiVersion: 
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   customRuntimeLoaderName: 
   symmetricProjection: 0
   optimizeBufferDiscards: 1
-  multiviewRenderRegionsOptimizationMode: 0
+  optimizeMultiviewRenderRegions: 0
 --- !u!114 &2148028111730435554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,7 +1345,6 @@ MonoBehaviour:
   - {fileID: -7574424450197178021}
   - {fileID: 1516296823699409721}
   - {fileID: -6154712962798883403}
-  - {fileID: 7902563590590843781}
   - {fileID: 5069350205405667636}
   - {fileID: 627079849367691646}
   - {fileID: -6010963819873061797}
