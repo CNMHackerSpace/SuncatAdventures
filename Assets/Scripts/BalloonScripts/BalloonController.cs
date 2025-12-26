@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BalloonController : MonoBehaviour
 {
@@ -16,14 +17,14 @@ public class BalloonController : MonoBehaviour
     public float yForceDecay = -0.01f;
     public TMP_Text altitudeText;
     public TMP_Text windSpeedText;
-    
+
     public TMP_Text telemetryText;
     public float upForce = 0.1f; //kg/m^3
     public float downForce = 0.1f; //kg/m^3
     public float maxYForce = 20.0f; //kg/m^3
     public float minYForce = 0.0f; //kg/m^3
     public bool showTelemetry = false;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,13 +67,13 @@ public class BalloonController : MonoBehaviour
     private Vector3 CalculateWindForce(float altitude)
     {
         altitudeText.text = $"Altitude: {altitude.ToString("F2")}";
-        var altidudeRatio = (windDirectionChangeAltitude-altitude) / windDirectionChangeAltitude;
+        var altidudeRatio = (windDirectionChangeAltitude - altitude) / windDirectionChangeAltitude;
         altidudeRatio = Math.Clamp(altidudeRatio, -1, 1);
 
         var altitudeWindSpeed = windSpeed * altidudeRatio;
         windSpeedText.text = $"Wind speed: {altitudeWindSpeed.ToString("F2")}";
 
-        var relativeSpeedRatio = (rb.linearVelocity.magnitude - altitudeWindSpeed)/altitudeWindSpeed;
+        var relativeSpeedRatio = (rb.linearVelocity.magnitude - altitudeWindSpeed) / altitudeWindSpeed;
         relativeSpeedRatio = Math.Clamp(relativeSpeedRatio, -1, 1);
 
         return relativeSpeedRatio * groundWindDirection * windForce;
